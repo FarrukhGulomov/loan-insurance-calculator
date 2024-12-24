@@ -80,18 +80,37 @@ body {
     margin-bottom: 12px;
     color: #333;
     font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.form-group:focus-within label {
+    color: #00c853;
 }
 
 .form-select, .form-input {
     width: 100%;
     padding: 16px;
-    border: none;
+    border: 2px solid transparent;
     border-radius: 12px;
-    background-color: white;
+    background-color: #f8f9fd;
     color: #333;
     font-size: 15px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     appearance: none;
+    transition: all 0.2s ease;
+}
+
+.form-select:hover, .form-input:hover {
+    background-color: #f1f2f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.form-select:focus, .form-input:focus {
+    outline: none;
+    border-color: #00c853;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(0, 200, 83, 0.1);
 }
 
 .form-select {
@@ -99,6 +118,11 @@ body {
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+    cursor: pointer;
+}
+
+.form-select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2300c853' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 .loan-amount-input {
@@ -107,11 +131,46 @@ body {
     align-items: center;
 }
 
+.loan-amount-input .form-input {
+    padding-right: 50px;
+}
+
 .currency {
     position: absolute;
     right: 16px;
     color: #666;
     font-size: 15px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: color 0.2s ease;
+}
+
+.loan-amount-input:focus-within .currency {
+    color: #00c853;
+}
+
+.form-input::placeholder {
+    color: #999;
+    transition: color 0.2s ease;
+}
+
+.form-input:focus::placeholder {
+    color: #ccc;
+}
+
+.form-group.error label {
+    color: #ff3b30;
+}
+
+.form-group.error .form-input,
+.form-group.error .form-select {
+    border-color: #ff3b30;
+    background-color: #fff8f8;
+}
+
+.form-group.error .form-input:focus,
+.form-group.error .form-select:focus {
+    box-shadow: 0 0 0 4px rgba(255, 59, 48, 0.1);
 }
 
 .insurance-section {
@@ -286,4 +345,57 @@ input:checked + .slider:before {
 
 .bottom-nav button.active {
     color: #00c853;
+}
+
+.continue-button {
+    width: 100%;
+    padding: 16px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 90px;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 12px 0 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.bottom-nav-content {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bottom-nav button {
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    font-size: 12px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.bottom-nav button.active {
+    color: #00c853;
+}
+
+.bottom-nav svg {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
 }

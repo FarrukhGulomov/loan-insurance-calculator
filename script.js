@@ -135,6 +135,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle continue button click
     document.querySelector('.continue-button').addEventListener('click', function() {
+        const baseAmount = parseFormattedNumber(loanAmountInput.value);
+        
+        if (baseAmount <= 499999) {
+            alert('Минимальная сумма кредита должна быть больше 500 000 сум');
+            return;
+        }
+
+        // If amount is valid, proceed to scoring page
         window.location.href = 'scoring.html';
     });
 });
