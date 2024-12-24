@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Insurance Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loan-form">
+        <div class="header">
+            <button class="back-button">←</button>
+            <h1>Подобрать условия</h1>
+        </div>
+
+        <div class="form-group">
+            <label>Сумма кредита</label>
+            <div class="loan-amount-input">
+                <input type="text" id="loanAmount" class="form-input" value="0">
+                <span class="currency">сум</span>
+            </div>
+        </div>
+        
+        <div class="duration-selector">
+            <button class="duration-button" data-value="0.25">3 мес.</button>
+            <button class="duration-button" data-value="0.5">6 мес.</button>
+            <button class="duration-button active" data-value="1">1 год</button>
+            <button class="duration-button" data-value="2">2 года</button>
+            <button class="duration-button" data-value="3">3 года</button>
+        </div>
+
+        <div class="form-group">
+            <label>Вид платежа</label>
+            <select id="paymentType" class="form-select">
+                <option value="">Выберите из списка</option>
+                <option value="annuity">Аннуитетный</option>
+                <option value="differential">Дифференцированный</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>День платежа</label>
+            <select id="paymentDay" class="form-select">
+                <option value="">Выберите из списка</option>
+            </select>
+        </div>
+
+        <div class="insurance-section">
+            <div class="insurance-toggle">
+                <div class="insurance-header">
+                    <div class="insurance-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L4 6V12C4 17.55 7.84 22.74 12 24C16.16 22.74 20 17.55 20 12V6L12 2ZM12 22C8.52 20.84 6 16.54 6 12V7.2L12 4.2L18 7.2V12C18 16.54 15.48 20.84 12 22Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span>Страхование</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="insuranceToggle" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="insuranceInfo" class="insurance-info">
+                <p>Поможет платить по кредиту в случае потери трудоспособности.</p>
+                <p class="insurance-amount"><span id="insurancePremium">562 500</span> сум учтено в сумме займа, ничего доплачивать не нужно.</p>
+                <button class="more-info-button">Больше информации →</button>
+            </div>
+        </div>
+
+        <div class="payment-info">
+            <div class="monthly-payment">
+                <label>Ежемесячный платёж</label>
+                <h2 id="monthlyPaymentAmount">3 815 168 сум</h2>
+            </div>
+        </div>
+
+        <button class="continue-button">Продолжить</button>
+
+        <nav class="bottom-nav">
+            <button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/>
+                </svg>
+                Главная
+            </button>
+            <button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" fill="currentColor"/>
+                </svg>
+                Оплата
+            </button>
+            <button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Переводы
+            </button>
+            <button>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M7.5 21L3 16.5m0 0L7.5 12m-4.5 4.5h13.5M16.5 3L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Обмен
+            </button>
+            <button class="active">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/>
+                </svg>
+                Сервисы
+            </button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скоринг - Итоговая сумма</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .scoring-summary {
+            padding: 24px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            color: #666;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 2px solid #eee;
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .back-link {
+            color: #00c853;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .summary-header {
+            margin-bottom: 32px;
+        }
+
+        .summary-header h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 16px 0;
+        }
+
+        .summary-header p {
+            color: #666;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loan-form">
+        <a href="index.html" class="back-link">← Вернуться назад</a>
+        
+        <div class="summary-header">
+            <h1>Итоговая сумма</h1>
+            <p>Проверьте детали вашего кредита перед отправкой на скоринг</p>
+        </div>
+
+        <div class="scoring-summary">
+            <div class="summary-item">
+                <span>Сумма кредита:</span>
+                <span id="baseLoanAmount">0 сум</span>
+            </div>
+            <div class="summary-item">
+                <span>Страховая премия:</span>
+                <span id="insuranceAmount">0 сум</span>
+            </div>
+            <div class="summary-item">
+                <span>Срок кредита:</span>
+                <span id="loanDuration">1 год</span>
+            </div>
+            <div class="summary-item">
+                <span>Ежемесячный платёж:</span>
+                <span id="monthlyPayment">0 сум</span>
+            </div>
+            <div class="summary-total">
+                <span>Итого к рассмотрению:</span>
+                <span id="totalAmount">0 сум</span>
+            </div>
+        </div>
+
+        <button class="continue-button" onclick="submitScoring()">Отправить на скоринг</button>
+
+        <nav class="bottom-nav">
+            <button>Главная</button>
+            <button>Оплата</button>
+            <button>Переводы</button>
+            <button>Обмен</button>
+            <button class="active">Сервисы</button>
+        </nav>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get data from localStorage
+            const loanData = JSON.parse(localStorage.getItem('loanData') || '{}');
+            
+            // Update summary with data
+            document.getElementById('baseLoanAmount').textContent = loanData.baseAmount || '0 сум';
+            document.getElementById('insuranceAmount').textContent = loanData.insuranceAmount || '0 сум';
+            document.getElementById('loanDuration').textContent = formatDuration(loanData.duration || 1);
+            document.getElementById('monthlyPayment').textContent = loanData.monthlyPayment || '0 сум';
+            document.getElementById('totalAmount').textContent = loanData.totalAmount || '0 сум';
+        });
+
+        function formatDuration(duration) {
+            if (duration < 1) {
+                return Math.round(duration * 12) + ' мес.';
+            }
+            return duration + (duration === 1 ? ' год' : ' года');
+        }
+
+        function submitScoring() {
+            // Here you would typically send the data to your backend
+            alert('Заявка отправлена на рассмотрение!');
+        }
+    </script>
+</body>
+</html>

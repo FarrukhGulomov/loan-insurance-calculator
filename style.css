@@ -1,0 +1,289 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loan-form {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 20px 90px;
+    background-color: #f1f2f6;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    padding: 8px;
+    cursor: pointer;
+    color: #333;
+}
+
+.header h1 {
+    margin-left: 16px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.duration-selector {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0 32px;
+    overflow-x: auto;
+    padding: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.duration-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 100px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.duration-button.active {
+    background-color: #00c853;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 12px;
+    color: #333;
+    font-size: 15px;
+}
+
+.form-select, .form-input {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    color: #333;
+    font-size: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    appearance: none;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23333333' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.loan-amount-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.currency {
+    position: absolute;
+    right: 16px;
+    color: #666;
+    font-size: 15px;
+}
+
+.insurance-section {
+    background-color: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.insurance-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.insurance-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.insurance-header span {
+    font-size: 15px;
+    color: #333;
+}
+
+.insurance-icon {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 200, 83, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00c853;
+}
+
+.insurance-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    transition: .4s;
+    border-radius: 31px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+    background-color: #00c853;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.insurance-info {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.insurance-amount {
+    margin: 12px 0;
+    color: #333;
+}
+
+.more-info-button {
+    color: #00c853;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.payment-info {
+    margin-bottom: 32px;
+}
+
+.monthly-payment label {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.monthly-payment h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+.continue-button {
+    width: 100%;
+    padding: 18px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 80px;
+    box-shadow: 0 2px 4px rgba(0, 200, 83, 0.2);
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+    max-width: 480px;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+.bottom-nav button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bottom-nav button.active {
+    color: #00c853;
+}
