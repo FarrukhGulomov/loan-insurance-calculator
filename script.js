@@ -119,6 +119,39 @@ document.addEventListener('DOMContentLoaded', function() {
         const monthlyPaymentElement = document.getElementById('monthlyPaymentAmount');
         monthlyPaymentElement.textContent = formatNumber(monthlyPayment) + ' сум';
 
+if (insuranceToggle.checked) {
+    const result = calculateInsurancePremium(baseAmount, currentDuration);
+    totalAmount = result.totalAmount;
+    insurancePremium = result.insurancePremium;
+
+    // Sug‘urta limiti tekshirilmoqda
+    if (totalAmount > 50000000) {
+        insuranceToggle.checked = false;
+        insuranceInfo.style.display = 'none';
+        totalAmount = baseAmount;
+        insurancePremium = 0;
+    }
+}
+
+// Agar umumiy summa 50 000 000 dan kichik bo‘lsa, sug‘urtani yana yoqish
+if (!insuranceToggle.checked && totalAmount < 50000000) {
+    insuranceToggle.checked = true;
+    insuranceInfo.style.display = 'block';
+    
+    // Sug‘urtani qayta hisoblash
+    const result = calculateInsurancePremium(baseAmount, currentDuration);
+    totalAmount = result.totalAmount;
+    insurancePremium = result.insurancePremium;
+}
+
+// Update insurance premium display
+const insurancePremiumElement = document.getElementById('insurancePremium');
+insurancePremiumElement.textContent = formatNumber(insurancePremium);
+
+// For development purposes, log the number of iterations
+console.log('Calculation iterations:', result ? result.iterations : 'N/A');
+
+        
         // Save current state
         const loanData = {
             baseAmount: formatNumber(baseAmount) + ' сум',
