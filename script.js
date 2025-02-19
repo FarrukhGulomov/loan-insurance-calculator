@@ -130,11 +130,14 @@ if (insuranceToggle.checked) {
         insuranceInfo.style.display = 'none';
         totalAmount = baseAmount;
         insurancePremium = 0;
+
+        // Toggle ni o‘chirishni aniq bajaramiz
+        insuranceToggle.dispatchEvent(new Event('change'));
     }
 }
 
 // Agar umumiy summa 50 000 000 dan kichik bo‘lsa, sug‘urtani yana yoqish
-if (!insuranceToggle.checked && totalAmount < 50000000) {
+if (!insuranceToggle.checked && (baseAmount + insurancePremium) < 50000000) {
     insuranceToggle.checked = true;
     insuranceInfo.style.display = 'block';
     
@@ -142,6 +145,9 @@ if (!insuranceToggle.checked && totalAmount < 50000000) {
     const result = calculateInsurancePremium(baseAmount, currentDuration);
     totalAmount = result.totalAmount;
     insurancePremium = result.insurancePremium;
+
+    // Toggle qayta yoqilganligini ta’minlash
+    insuranceToggle.dispatchEvent(new Event('change'));
 }
 
 // Update insurance premium display
@@ -150,6 +156,7 @@ insurancePremiumElement.textContent = formatNumber(insurancePremium);
 
 // For development purposes, log the number of iterations
 console.log('Calculation iterations:', result ? result.iterations : 'N/A');
+
 
         
         // Save current state
